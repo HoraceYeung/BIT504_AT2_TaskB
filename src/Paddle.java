@@ -8,7 +8,11 @@ public class Paddle extends Sprite {
 	
 	public Paddle(Player player, int PanelWidth, int PanelHeight) {
 		int initialXPosition;
-		int initialYPosition = PanelHeight + HEIGHT/2;
+		int initialYPosition = (PanelHeight - HEIGHT)/2;
+		
+		setWidth(WIDTH);
+		setHeight(HEIGHT);
+		setColor(COLOR);
 		
 		if (player == Player.One) {
 			initialXPosition = DISTANCE_FROM_EDGE;
