@@ -15,6 +15,7 @@ import java.awt.Color;
 public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private final static Color BACKGROUND_COLOUR = Color.BLACK;
 	private final static int TIMER_DELAY = 5;
+	private static int BALL_MOVEMENT_SPEED = 1;
 	private GameState gameState = GameState.Initialising; 
 	private Ball ball;
 	private Paddle paddleOne;
@@ -31,15 +32,38 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		paddleOne = new Paddle(Player.One, getWidth(), getHeight());
 		paddleTwo = new Paddle(Player.Two, getWidth(), getHeight());
 	}
+	
+	public void moveObject(Sprite sprite) {
+		sprite.setXPosition(sprite.getXPosition() + sprite.getXVelocity(), getWidth());
+		sprite.setYPosition(sprite.getYPosition() + sprite.getYVelocity(), getHeight());
+	}
+	
+	public void resetBall() {
+		ball.resetToInitialPosition();
+	}
+	
+	public void checkWallBounce() {
+		if (ball.getYPosition() <= 0 || (ball.getYPosition() + ball.getHeight()) >= getHeight()) {
+			ball.setYVelocity(-ball.getYVelocity());
+		}
+
+		if (ball.getXPosition() <= 0 || (ball.getXPosition() + ball.getWidth()) >= getWidth()) {
+			resetBall();
+		}
+	}
 
 	private void update() {
 		switch(gameState) {
 			case Initialising: {
 				createObjects();
+				ball.setXVelocity(1 * BALL_MOVEMENT_SPEED);
+				ball.setYVelocity(1 * BALL_MOVEMENT_SPEED);
 				gameState = GameState.Playing;
 				break;
 			}
 			case Playing: {
+				moveObject(ball);
+				checkWallBounce();
 				break;
 			}
 			case GameOver: {
