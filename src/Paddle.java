@@ -1,7 +1,7 @@
 import java.awt.Color;
 
 public class Paddle extends Sprite {
-	private final static int WIDTH = 10;
+	private final static int WIDTH = 20;
 	private final static int HEIGHT = 100;
 	private final static Color COLOR = Color.WHITE;
 	private final static int DISTANCE_FROM_EDGE = 40;
