@@ -16,6 +16,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private final static Color BACKGROUND_COLOUR = Color.BLACK;
 	private final static int TIMER_DELAY = 5;
 	private static int BALL_MOVEMENT_SPEED = 3;
+	private static int PADDLE_MOVEMENT_SPEED = 5;
 	private GameState gameState = GameState.Initialising;
 	private Ball ball;
 	private Paddle paddleOne;
@@ -168,13 +169,13 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent event) {
 		if (event.getKeyCode() == KeyEvent.VK_UP) {
-			paddleTwo.setYVelocity(-1);
+			paddleTwo.setYVelocity(-PADDLE_MOVEMENT_SPEED);
 		} else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
-			paddleTwo.setYVelocity(1);
+			paddleTwo.setYVelocity(PADDLE_MOVEMENT_SPEED);
 		} else if (event.getKeyCode() == KeyEvent.VK_W) {
-			paddleOne.setYVelocity(-1);
+			paddleOne.setYVelocity(-PADDLE_MOVEMENT_SPEED);
 		} else if (event.getKeyCode() == KeyEvent.VK_S) {
-			paddleOne.setYVelocity(1);
+			paddleOne.setYVelocity(PADDLE_MOVEMENT_SPEED);
 		}
 	}
 
