@@ -15,7 +15,7 @@ import java.awt.Color;
 public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private final static Color BACKGROUND_COLOUR = Color.BLACK;
 	private final static int TIMER_DELAY = 5;
-	private static int BALL_MOVEMENT_SPEED = 1;
+	private static int BALL_MOVEMENT_SPEED = 3;
 	private GameState gameState = GameState.Initialising;
 	private Ball ball;
 	private Paddle paddleOne;
